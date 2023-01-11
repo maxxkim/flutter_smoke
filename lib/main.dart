@@ -1,8 +1,7 @@
-import 'dart:io';
-
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:video_player/video_player.dart';
 
 void main() {
   runApp(MyApp());
@@ -219,8 +218,6 @@ class GeneratorPage extends StatelessWidget {
 class AchievementsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var appState = context.watch<MyAppState>();
-
     return Padding(
       padding: const EdgeInsets.all(20.0),
       child: ListView(
@@ -268,13 +265,11 @@ class AchievementsPage extends StatelessWidget {
 class ContactsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var appState = context.watch<MyAppState>();
-
     return ListView(
       children: [
         Card(
           child: ListTile(
-            leading: FlutterLogo(size: 56.0),
+            leading: Image.asset("assets/images/joseph.jpeg"),
             title: Text('Joseph Mengele'),
             subtitle: Text('Your psychiatrist'),
             trailing: Icon(Icons.more_vert),
@@ -282,15 +277,15 @@ class ContactsPage extends StatelessWidget {
         ),
         Card(
           child: ListTile(
-            leading: FlutterLogo(size: 56.0),
-            title: Text('Edward Alrick'),
+            leading: Image.asset('assets/images/edvard.jpg'),
+            title: Text('Edward Elric'),
             subtitle: Text('Friend'),
             trailing: Icon(Icons.more_vert),
           ),
         ),
         Card(
           child: ListTile(
-            leading: FlutterLogo(size: 56.0),
+            leading: Image.asset('assets/images/alina.jpeg'),
             title: Text('Alina Fox'),
             subtitle: Text('Friend'),
             trailing: Icon(Icons.more_vert),
@@ -301,52 +296,52 @@ class ContactsPage extends StatelessWidget {
   }
 }
 
-class MotivationPage extends StatelessWidget {
+class MotivationPage extends StatefulWidget {
+  @override
+  State<MotivationPage> createState() => _MotivationPageState();
+}
+
+class _MotivationPageState extends State<MotivationPage> {
+  late VideoPlayerController _controller;
+  @override
+  void initState() {
+    _controller = VideoPlayerController.asset("assets/images/doit.mp4")
+      ..initialize().then((_) {
+        setState(() {});
+      });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    var appState = context.watch<MyAppState>();
-    if (appState.favorites.isEmpty) {
-      return Center(
-        child: Text('Motivation'),
-      );
-    }
-
-    return ListView(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(20),
-          child: Text('You have '
-              '${appState.favorites.length} favorite saying:'),
-        ),
-        Card(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Text(
-              "'It's easy to quit smoking. I've done it hundreds of times.' (c) Mark Twain",
-            ),
-          ),
-        ),
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                appState.toggleFavorite();
-              },
-              child: Text('Share'),
-            ),
-            SizedBox(width: 10),
-            ElevatedButton(
-              onPressed: () {
-                appState.getNext();
-              },
-              child: Text('Edit'),
-            ),
-          ],
-        ),
-      ],
+    return Scaffold(
+      body: _controller.value.initialized
+          ? VideoPlayer(_controller)
+          : Container(),
+      floatingActionButton: FloatingActionButton(
+          child: Icon(
+              _controller.value.isPlaying ? Icons.pause : Icons.play_arrow),
+          onPressed: () {
+            setState(() {
+              _controller.value.isPlaying
+                  ? _controller.pause()
+                  : _controller.play();
+            });
+          }),
     );
   }
+
+  /* Widget content(BuildContext context) {
+    return Center(
+      child: Container(
+        width: 350,
+        height: 350,
+        child: _controller.value.initialized
+            ? VideoPlayer(_controller)
+            : Container(),
+      ),
+    );
+  }*/
 }
 
 class BigCard extends StatelessWidget {
