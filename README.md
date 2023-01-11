@@ -1,16 +1,30 @@
-# flutter_app
+# NoSmoke
 
-A new Flutter project.
+  Мобильное приложение NoSmoke является мотивирующим приложением, предназначенным для тех, кто бросает курить. 
+  
+	В функционал приложение входит отслеживание достижений бросающего, трекер времени, сэкономленных финансов, а также мотивирующие инструменты – видеоклипы и цитаты. 
+  
+	Приложение может работать на операционных системах macOS, Linux (большинство дистрибутивов) и Windows 7+, а также мобильных ОС Android 5+ и iOS 11+.
+  
+	Приложение не является ресурсоемким и не требует функционала смартфона. Минимальные технические требования задаются воспроизведением видео.
+  
+	Приложение предназначено для лиц старше 18 лет.
+  
+	Ниже представлены скриншоты для некоторых операционных систем:
 
-## Getting Started
+## Как развернуть?
 
-This project is a starting point for a Flutter application.
+  Для того, чтобы развернуть у себя проект, cклонируйте его и установите зависимости, перечисленные в файле pubspec.yaml
 
-A few resources to get you started if this is your first Flutter project:
+  Разрабатывалось с опорой на данный гайдлайн и больную фантазию автора(https://docs.flutter.dev/get-started/codelab)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+  Ниже скриншоты и видеодемонстрация, не судите строго :')
+  
+  
+  
+  
+  
+![image](https://user-images.githubusercontent.com/31654141/211832005-72c102e6-c807-42d2-8636-d84561192d23.png)
+![image](https://user-images.githubusercontent.com/31654141/211832026-347da9cf-bdf5-4d35-9a8c-7d943be32234.png)
+![image](https://user-images.githubusercontent.com/31654141/211832075-9d116524-5f19-4c9f-82e4-84fd6878a85d.png)
+![image](https://user-images.githubusercontent.com/31654141/211832095-abc0f6d8-7ed8-4dba-9339-9fba57d4f450.png)
